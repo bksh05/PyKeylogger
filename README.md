@@ -17,9 +17,10 @@ You also need to install following packages
   - Change the time as per rquirement (By default it will mail the logs every minute)
   - Save it
 - Open terminal and run main.py
-  '''
+
+  ```
   python main.py
-  '''
+  ```
   
 
 ## Authors
