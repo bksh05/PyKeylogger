@@ -22,3 +22,6 @@ smtp = {
 
 #After how much time (in seconds) the mail shoud be sent to the sender (60 for one minute)
 time = 60
+
+
+destruction = False
