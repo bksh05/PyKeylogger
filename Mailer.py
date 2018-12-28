@@ -43,7 +43,7 @@ class Mailer(threading.Thread):
 		self.msg.attach(mb) 
 
 
-		mailServer = smtplib.SMTP('mail.smtp2go.com', 2525) # 8025, 587 and 25 can also be used. 
+		mailServer = smtplib.SMTP('mail.smtp2go.com', 2525) 
 		mailServer.ehlo()
 		mailServer.starttls()
 		mailServer.ehlo()
@@ -59,16 +59,15 @@ class Mailer(threading.Thread):
 	    	return False
 	
 	def run(self):
-		updated = datetime.datetime.now()
-		while True:
+		mailed_at = datetime.datetime.now()
+		while not con.destruction:
 			conn = self.__internet_on()
 			now = datetime.datetime.now()
-			print((abs(updated-now)).total_seconds())
-			if (abs(updated-now)).total_seconds() > con.time and conn:
-				
+			print((abs(mailed_at-now)).total_seconds())
+			if (abs(mailed_at-now)).total_seconds() > con.time and conn:	
 				if os.path.exists(self.filename):
 					self.mail()
 					os.remove(self.filename)
 				else:
 					print("The file does not exist")
-				updated = datetime.datetime.now()
+				mailed_at = datetime.datetime.now()

